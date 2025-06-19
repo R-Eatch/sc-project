@@ -22,9 +22,8 @@ library(ggalluvial)  # river plots need this
 library(NMF)
 library(ggplotify)
 # =============== USER SETTINGS ================================================
-output_dir    <- "D:/111/CellChat"                   # change if needed
-dataset_names <- c('R-MG'
-                   #,'S-MG','M-MG','R-AG','S-AG','R-CG'
+output_dir    <- "D:/111/CellChat-immune-plot"                   # change if needed
+dataset_names <- c('R-MG','S-MG','M-MG','R-AG','S-AG','R-CG'
                    )
 use_spefic_color <- TRUE
 # Pathways for dedicated chord diagrams + CSV export
