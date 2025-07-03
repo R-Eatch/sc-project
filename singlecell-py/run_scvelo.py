@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
+# In[1]:
 
 
 import warnings
@@ -12,10 +12,11 @@ import anndata as ad
 import scanpy as sc
 import plotly.express as px
 import matplotlib.pyplot as plt
+import matplotlib
 print('import successful')
 
 
-# In[3]:
+# In[2]:
 
 
 import scvelo as scv
@@ -23,6 +24,7 @@ scv.logging.print_version()
 scv.settings.verbosity = 3  # show errors(0), warnings(1), info(2), hints(3)
 scv.settings.presenter_view = True  # set max width size for presenter view
 scv.settings.figdir= ''
+scv.settings.set_figure_params(dpi_save=300, vector_friendly=False)
 
 
 # In[16]:
@@ -51,11 +53,9 @@ droplist=['Lum-Cd74','Lum-Adipoq']
 
 
 def run_plotly(adata,dataset):
-
     umap_data = pd.DataFrame(adata.obsm['X_umap'], columns=['UMAP1', 'UMAP2'])
     umap_data['cell_ids'] = adata.obs.index 
     umap_data['stage'] = adata.obs['stage'] 
-
     fig = px.scatter(umap_data, x='UMAP1', y='UMAP2', hover_data=['cell_ids', 'stage'],width=800,height=450)
     fig.show()
     fig.write_html(f'{dataset}-interactive_umap_plot.html')
@@ -128,6 +128,28 @@ scv.tl.velocity_graph(adata1)
 
 
 scv.pl.velocity_embedding_stream(adata1, basis='umap',color='newcelltype',save=f'./{dataset}_velo.png')
+
+
+# In[ ]:
+
+
+#scv.pl.velocity_embedding_stream(adata1, basis='umap',color='newcelltype',save=f'./{dataset}_velo.pdf')
+
+
+# In[ ]:
+
+
+ax=scv.pl.velocity_embedding_stream(adata1, basis='umap',color='newcelltype',show=False)
+fig = ax.get_figure()
+# 3️⃣ 递归遍历整张图，能栅格化的都栅格化
+for artist in fig.findobj(match=matplotlib.artist.Artist):
+    if hasattr(artist, "set_rasterized"):
+        artist.set_rasterized(True)
+
+# 4️⃣ 保存；dpi 只影响栅格化元素的分辨率
+fig.savefig(f'./{dataset}_velo.pdf',
+            dpi=300, bbox_inches="tight", format="pdf")
+plt.close(fig)
 
 
 # In[27]:

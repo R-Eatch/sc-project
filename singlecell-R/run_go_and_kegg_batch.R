@@ -3,8 +3,8 @@
 # GO / KEGG enrichment per gene-set column   (mouse, SYMBOL for GO)
 # ==============================================================
 ## 1 ─ 用户设置 -------------------------------------------------
-input_csv    <- "common_gene-0619.csv"                               # ← CSV 路径
-result_root  <- "D:/Rfile/result/0619"   # ← 结果根目录
+input_csv    <- "D:/Rfile/result/0620/common_gene-0620.csv"                               # ← CSV 路径
+result_root  <- "D:/Rfile/result/0620/"   # ← 结果根目录
 ont          <- "MF"       # "BP" | "CC" | "MF"
 output_go    <- TRUE
 output_kegg  <- FALSE
