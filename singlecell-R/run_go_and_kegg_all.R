@@ -4,14 +4,13 @@
 # ==============================================================
 
 ## 0 ─ 用户参数 --------------------------------------------------
-input_csv    <- "D:/111/LumHR_unique_results/LummHR-SCGB_human_unique_inData.csv"
+input_csv    <- "D:/111/LumHR_unique_results/LummHR-major_human_unique_nonexpr_inData.csv"
 gene_col     <- "mouse_gene"    # 基因名列 (SYMBOL)
 rank_col     <- "scores"        # 排序列
 top_n_genes  <- 300             # Top-N
-dataset      <- "LummHR-SCGB"        # ←★ 新增：数据集标签 (影响文件名 & 图标题)
+dataset      <- "LummHR-major"        # ←★ 新增：数据集标签 (影响文件名 & 图标题)
 result_root  <- "D:/111/LumHR_unique_results/enrich_result"
-
-plot_width   <- 20              # ←★ 放大宽度
+plot_width   <- 15              # ←★ 放大宽度
 plot_height  <- 20              # ←★ 放大高度
 ## --------------------------------------------------------------
 
