@@ -1,0 +1,19 @@
+
+#PBS -N exam_tree
+#PBS -o log1
+ 
+#PBS -e log1
+   
+#PBS -q more      
+#PBS -l nodes=1:ppn=8
+#PBS -r y                
+
+source /data01/sunxuebo/software/miniconda3/etc/profile.d/conda.sh
+
+conda activate mafft
+
+cd $PBS_O_WORKDIR
+
+export OMP_NUM_THREADS=8
+
+/usr/bin/time -o ./time.log -v bash 3.run_exam_trees.sh

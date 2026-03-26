@@ -1,0 +1,23 @@
+
+#PBS -N peaks2utr
+#PBS -o ./
+ 
+#PBS -e ./
+   
+#PBS -q more        
+#PBS -l nodes=1:ppn=16
+#PBS -r y                
+
+export PATH=/public/home/sunxuebo/software/gt-1.5.10-Linux_x86_64-64bit-complete/bin:$PATH
+cd /data01/sunxuebo/project/zuzhuang/03.peaks2utr
+
+source /public/home/sunxuebo/software/miniconda3/etc/profile.d/conda.sh
+
+conda activate peaks2utr
+
+peaks2utr -p 16 -f --keep-cache /data01/sunxuebo/project/zuzhuang/03.peaks2utr/test.noStopCodon.gff  /data01/sunxuebo/project/zuzhuang/02.hisat2/finalbam/sorted_merged.bam
+
+
+
+
+

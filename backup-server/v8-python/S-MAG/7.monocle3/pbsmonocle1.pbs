@@ -1,0 +1,18 @@
+
+#PBS -N monocle3
+#PBS -o log
+ 
+#PBS -e log
+   
+#PBS -q more       
+#PBS -l nodes=1:ppn=8
+#PBS -r y                
+
+source /public/home/sunxuebo/software/miniconda3/etc/profile.d/conda.sh
+
+conda activate monocle
+
+cd $PBS_O_WORKDIR
+
+/usr/bin/time -o ./time1.log -v Rscript run_monocle1.R
+

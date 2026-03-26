@@ -1,0 +1,48 @@
+#!/bin/bash
+#PBS -N stereopy          # 作业名称
+#PBS -l nodes=node1:ppn=16    # 指定在 node1 上运行，申请 16 个 CPU 核
+#PBS -l mem=128gb             # 申请 128GB 内存 (stereopy 比较吃内存，建议给大点)
+#PBS -l walltime=24:00:00     # 申请运行 24 小时
+#PBS -q more                 # 队列名称 (请根据您服务器实际的队列名修改，如 regular, high 等)
+#PBS -j oe                    # 将标准输出和错误输出合并
+#PBS -o jupyter_log.out       # 指定日志输出文件名
+
+# 1. 进入提交作业的目录
+cd $PBS_O_WORKDIR
+
+# 2. 加载环境
+# 注意：在脚本中直接用 conda activate 有时会报错，
+# 需要先 source 一下 conda 的配置脚本。
+# 如果您的 conda 安装在其他路径，请修改下面这一行：
+source /data01/sunxuebo/software/miniconda3/etc/profile.d/conda.sh
+conda activate st
+# 或者如果上面的 source 不行，尝试： source ~/.bashrc; conda activate st
+
+# 3. 设置端口
+# 为了避免端口冲突，这里您可以指定一个特定的端口，比如 8889
+# 或者由脚本随机生成一个端口（如果您希望随机，请取消下面注释）
+# PORT=$(shuf -i 8000-9999 -n 1)
+PORT=8889
+
+# 获取当前计算节点的主机名
+NODE=$(hostname)
+
+# 4. 打印连接指南到日志文件
+echo "=========================================================="
+echo "Job is running on node: $NODE"
+echo "Jupyter Port: $PORT"
+echo "----------------------------------------------------------"
+echo "【第一步】在 Xshell 设置隧道 (推荐)："
+echo "  类型: Local (Outgoing)"
+echo "  侦听端口 (本地): 9999"
+echo "  目标主机 (服务器内网): $NODE"
+echo "  目标端口: $PORT"
+echo "----------------------------------------------------------"
+echo "【第二步】本地浏览器访问："
+echo "  http://localhost:9999"
+echo "=========================================================="
+
+# 5. 启动 Jupyter Lab
+# --ip=0.0.0.0 或 --ip=$(hostname) 允许外部通过隧道连接
+jupyter lab --no-browser --port=$PORT --ip=$NODE
+

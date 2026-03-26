@@ -1,0 +1,27 @@
+
+#PBS -N h5ad2seurat
+#PBS -o log
+ 
+#PBS -e log
+   
+#PBS -q more       
+#PBS -l nodes=1:ppn=8
+#PBS -r y                
+
+
+source /data01/sunxuebo/software/miniconda3/etc/profile.d/conda.sh
+
+conda activate py310
+
+cd $PBS_O_WORKDIR
+
+/usr/bin/time -o ./time.log -v python3 gland_h5adpre.py
+
+
+source /public/home/sunxuebo/software/miniconda3/etc/profile.d/conda.sh
+
+cd $PBS_O_WORKDIR
+conda activate new_sceasy
+/usr/bin/time -o ./time2 -v Rscript gland_h52seurat.R
+
+

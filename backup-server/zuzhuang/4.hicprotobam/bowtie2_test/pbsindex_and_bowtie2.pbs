@@ -1,0 +1,13 @@
+
+#PBS -N bowtie2
+#PBS -o /data01/sunxuebo/project/zuzhuang/4.hicprotobam/bowtie2_test
+ 
+#PBS -e /data01/sunxuebo/project/zuzhuang/4.hicprotobam/bowtie2_test
+   
+#PBS -q more        
+
+#PBS -l nodes=node5:ppn=64
+#PBS -r y                
+cd /data01/sunxuebo/project/zuzhuang/4.hicprotobam/bowtie2_test
+
+/usr/bin/time -o time2.log -v sh run_bowtie2.sh

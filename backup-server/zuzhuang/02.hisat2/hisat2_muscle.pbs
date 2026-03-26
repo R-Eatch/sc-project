@@ -1,0 +1,11 @@
+#PBS -N hisat2_muscle
+#PBS -o ./
+#PBS -e ./
+#PBS -q more
+#PBS -l nodes=1:ppn=8
+#PBS -r y
+
+mkdir -p /data01/sunxuebo/project/zuzhuang/02.hisat2/hisat2_out/muscle
+cd /data01/sunxuebo/project/zuzhuang/02.hisat2/hisat2_out/muscle
+
+/public/home/xuwenjie/software/hisat2/hisat2-2.1.0/hisat2 -x ../../sugar_glider -1 /data01/sunxuebo/project/zuzhuang/transcriptome_data/ANNO_XS01KF2023120164_PM-XS01KF2023120164-03_2024-01-02_15-14-29_222M5HLT4/Cleandata/muscle/muscle_R1.fq.gz -2 /data01/sunxuebo/project/zuzhuang/transcriptome_data/ANNO_XS01KF2023120164_PM-XS01KF2023120164-03_2024-01-02_15-14-29_222M5HLT4/Cleandata/muscle/muscle_R2.fq.gz -S muscle.sam

@@ -1,0 +1,13 @@
+
+#PBS -N purge 
+#PBS -o /data01/sunxuebo/project/zuzhuang/1.1purge_dups
+ 
+#PBS -e /data01/sunxuebo/project/zuzhuang/1.1purge_dups
+   
+#PBS -q batch        
+
+#PBS -l nodes=1:ppn=16
+#PBS -r y                
+cd /data01/sunxuebo/project/zuzhuang/1.1purge_dups
+
+sh run_purge.sh

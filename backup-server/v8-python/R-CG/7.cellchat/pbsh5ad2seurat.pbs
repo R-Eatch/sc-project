@@ -1,0 +1,26 @@
+
+#PBS -N h5ad2seurat-RCG-2
+#PBS -o log
+ 
+#PBS -e log
+   
+#PBS -q more       
+#PBS -l nodes=1:ppn=8
+#PBS -r y                
+
+
+source /data01/sunxuebo/software/miniconda3/etc/profile.d/conda.sh
+
+conda activate py310
+
+cd $PBS_O_WORKDIR
+
+/usr/bin/time -o ./time1.log -v python3 h5ad2data.py
+
+source /public/home/sunxuebo/software/miniconda3/etc/profile.d/conda.sh
+
+cd $PBS_O_WORKDIR
+conda activate new_sceasy
+/usr/bin/time -o ./time2.log -v Rscript h5ad2seurat.R
+
+

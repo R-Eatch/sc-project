@@ -1,0 +1,18 @@
+
+#PBS -N SMAGveloVGI
+#PBS -o log
+ 
+#PBS -e log
+   
+#PBS -q more       
+#PBS -l nodes=1:ppn=32
+#PBS -r y                
+
+source /data01/sunxuebo/software/miniconda3/etc/profile.d/conda.sh
+
+conda activate velovgi
+
+cd $PBS_O_WORKDIR
+
+/usr/bin/time -o ./time.log -v python3 run_velovgi.py
+

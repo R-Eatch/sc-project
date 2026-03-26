@@ -1,0 +1,18 @@
+
+#PBS -N function_2
+#PBS -o ./
+ 
+#PBS -e ./
+   
+#PBS -q more        
+#PBS -l nodes=1:ppn=1
+#PBS -r y                
+
+
+cd $PBS_O_WORKDIR
+
+/usr/bin/time -o time2.log -v sh STEP02_fun_ann_stat.sh
+
+
+
+

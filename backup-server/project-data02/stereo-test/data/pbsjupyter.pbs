@@ -1,0 +1,37 @@
+#!/bin/bash
+#PBS -N stereopy              # Job name
+#PBS -l nodes=node1:ppn=16    # Node and CPU cores
+#PBS -l mem=128gb             # Memory
+#PBS -l walltime=24:00:00     # Max wall time
+#PBS -q more                  # Queue name
+#PBS -j oe                    # Merge stdout and stderr
+#PBS -o jupyter_log.out       # Log file
+
+# 1. Go to the submission directory
+cd "$PBS_O_WORKDIR"
+
+# 2. Load conda environment
+source /data01/sunxuebo/software/miniconda3/etc/profile.d/conda.sh
+conda activate st
+
+# 3. Set port
+PORT=8889
+NODE=$(hostname)
+
+# 4. Print connection instructions
+echo "=========================================================="
+echo "Job is running on node: $NODE"
+echo "Jupyter Port: $PORT"
+echo "----------------------------------------------------------"
+echo "STEP 1: Setup SSH tunnel (example):"
+echo "  Local port (on your PC): 9999"
+echo "  Target host (cluster node): $NODE"
+echo "  Target port: $PORT"
+echo "----------------------------------------------------------"
+echo "STEP 2: Open in your local browser:"
+echo "  http://localhost:9999"
+echo "=========================================================="
+
+# 5. Start Jupyter Lab
+jupyter lab --no-browser --port="${PORT}" --ip=0.0.0.0
+

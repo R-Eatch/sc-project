@@ -1,0 +1,28 @@
+
+#PBS -N tree-all
+#PBS -o log
+ 
+#PBS -e log
+   
+#PBS -q more      
+#PBS -l nodes=1:ppn=20
+#PBS -r y                
+
+source /data01/sunxuebo/software/miniconda3/etc/profile.d/conda.sh
+
+conda activate phylo_env
+
+cd $PBS_O_WORKDIR
+
+export OMP_NUM_THREADS=20
+
+cd ./1.extra_pep 
+python3 extract_longest_pep.py
+cd ../2.blastp
+/usr/bin/time -o ./time2.log -v python3 run_blastp.py
+cd ../3.mafft
+/usr/bin/time -o ./time3.log -v python3 run_mafft.py
+cd ../4.raxml
+/usr/bin/time -o ./time4.log -v python3 run_raxml.py
+
+

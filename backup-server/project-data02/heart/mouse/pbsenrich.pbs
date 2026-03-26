@@ -1,0 +1,19 @@
+
+#PBS -N enrich
+#PBS -o log
+ 
+#PBS -e log
+   
+#PBS -q more      
+#PBS -l nodes=1:ppn=10
+#PBS -r y                
+
+source /data01/sunxuebo/software/miniconda3/etc/profile.d/conda.sh
+
+conda activate hdWGCNA_env
+
+cd $PBS_O_WORKDIR
+
+export OMP_NUM_THREADS=1-
+
+/usr/bin/time -o ./time.log -v Rscript run_GO-KEGG.R

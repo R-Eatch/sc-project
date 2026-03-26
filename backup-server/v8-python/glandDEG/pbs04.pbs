@@ -1,0 +1,21 @@
+
+#PBS -N glandDEG
+#PBS -o log4
+ 
+#PBS -e log4
+   
+#PBS -q more       
+#PBS -l nodes=1:ppn=8
+#PBS -l mem=64gb
+#PBS -r y                
+
+source /data01/sunxuebo/software/miniconda3/etc/profile.d/conda.sh
+
+conda activate py310
+
+cd $PBS_O_WORKDIR
+
+#/usr/bin/time -o ./time.log -v python3 h5ad_pre.py
+
+/usr/bin/time -o ./time.log -v python3 04.run_find_unique.py
+

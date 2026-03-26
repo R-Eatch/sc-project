@@ -1,0 +1,13 @@
+
+#PBS -N hicpro 
+#PBS -o /data01/sunxuebo/project/zuzhuang/4.hicprotobam
+ 
+#PBS -e /data01/sunxuebo/project/zuzhuang/4.hicprotobam
+   
+#PBS -q more        
+
+#PBS -l nodes=node5:ppn=50
+#PBS -r y                
+cd /data01/sunxuebo/project/zuzhuang/4.hicprotobam
+
+/usr/bin/time -o time.log -v sh run_fastqtobam.sh

@@ -1,0 +1,11 @@
+#!/bin/bash
+#PBS -N decode_kidney
+#PBS -o ./
+#PBS -e ./
+#PBS -q more
+#PBS -l nodes=1:ppn=2
+#PBS -r y
+
+cd /data01/sunxuebo/project/zuzhuang/01.transdecoder
+/public/home/sunxuebo/software/TransDecoder-TransDecoder-v5.7.1/TransDecoder.LongOrfs -t ./data/kidney_TransLiG.fa -O ./cds
+/public/home/sunxuebo/software/TransDecoder-TransDecoder-v5.7.1/TransDecoder.Predict -t ./data/kidney_TransLiG.fa -O ./cds

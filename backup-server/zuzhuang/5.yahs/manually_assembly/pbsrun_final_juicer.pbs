@@ -1,0 +1,15 @@
+
+#PBS -N juicer_final 
+#PBS -o /data01/sunxuebo/project/zuzhuang/5.yahs/manually_assembly
+ 
+#PBS -e /data01/sunxuebo/project/zuzhuang/5.yahs/manually_assembly
+   
+#PBS -q more        
+
+#PBS -l nodes=1:ppn=32
+#PBS -r y                
+cd /data01/sunxuebo/project/zuzhuang/5.yahs/manually_assembly
+
+/usr/bin/time -o time2.log -v sh 5.run_final_juicer.sh
+
+

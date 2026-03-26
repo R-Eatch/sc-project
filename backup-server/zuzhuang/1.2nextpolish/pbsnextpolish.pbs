@@ -1,0 +1,14 @@
+
+#PBS -N nextpolish 
+#PBS -o /data01/sunxuebo/project/zuzhuang/1.2nextpolish
+ 
+#PBS -e /data01/sunxuebo/project/zuzhuang/1.2nextpolish
+   
+#PBS -q batch        
+
+#PBS -l nodes=1:ppn=50
+#PBS -r y                
+cd /data01/sunxuebo/project/zuzhuang/1.2nextpolish
+
+/public/home/sunxuebo/software/NextPolish/nextPolish run.cfg -l output.log
+

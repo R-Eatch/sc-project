@@ -1,0 +1,12 @@
+
+#PBS -N busco
+#PBS -o /data01/sunxuebo/project/zuzhuang/2.busco
+ 
+#PBS -e /data01/sunxuebo/project/zuzhuang/2.busco
+   
+#PBS -q batch        
+
+#PBS -l nodes=1:ppn=50
+#PBS -r y                
+cd /data01/sunxuebo/project/zuzhuang/2.busco
+sh run_busco.sh

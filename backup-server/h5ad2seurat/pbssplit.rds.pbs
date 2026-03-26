@@ -1,0 +1,18 @@
+
+#PBS -N rdssplit
+#PBS -o log
+ 
+#PBS -e log
+   
+#PBS -q more       
+#PBS -l nodes=1:ppn=24
+#PBS -l mem=128gb
+#PBS -r y                
+
+source /public/home/sunxuebo/software/miniconda3/etc/profile.d/conda.sh
+
+conda activate new_eatch
+
+cd $PBS_O_WORKDIR
+
+/usr/bin/time -o ./time.log -v  Rscript run_split_rds.R

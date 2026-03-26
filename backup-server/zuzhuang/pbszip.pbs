@@ -1,0 +1,14 @@
+
+#PBS -N tar 
+#PBS -o log
+ 
+#PBS -e log
+   
+#PBS -q more        
+
+#PBS -l nodes=1:ppn=1
+#PBS -r y                
+cd /data01/sunxuebo/project/zuzhuang/
+
+/usr/bin/time -o time1.log -v bash rungzip.sh
+

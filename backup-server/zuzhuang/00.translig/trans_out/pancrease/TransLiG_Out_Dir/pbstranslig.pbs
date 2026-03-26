@@ -1,0 +1,12 @@
+
+#PBS -N trans_protein
+#PBS -o /data01/sunxuebo/project/zuzhuang/00.translig/TransLiG_Out_Dir
+ 
+#PBS -e /data01/sunxuebo/project/zuzhuang/00.translig/TransLiG_Out_Dir
+   
+#PBS -q more        
+
+#PBS -l nodes=1:ppn=1
+#PBS -r y                
+cd /data01/sunxuebo/project/zuzhuang/00.translig/TransLiG_Out_Dir
+/usr/bin/time -o time.log -v sh run_protein.sh

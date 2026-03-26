@@ -1,0 +1,19 @@
+
+#PBS -N cellchat
+#PBS -o log
+ 
+#PBS -e log
+   
+#PBS -q more       
+#PBS -l nodes=1:ppn=8
+#PBS -r y                
+
+source /data01/sunxuebo/software/miniconda3/etc/profile.d/conda.sh
+
+cd $PBS_O_WORKDIR
+
+conda activate cellchat_env
+
+/usr/bin/time -o ./time3 -v R --slave --no-save < run_cellchat_batch_immune.R
+
+

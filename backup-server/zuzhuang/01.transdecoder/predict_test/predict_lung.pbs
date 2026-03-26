@@ -1,0 +1,13 @@
+#!/bin/bash
+#PBS -N predict_lung
+#PBS -o ./
+#PBS -e ./
+#PBS -q more
+#PBS -l nodes=1:ppn=20
+#PBS -r y
+
+cd /data01/sunxuebo/project/zuzhuang/01.transdecoder/predict_test
+source /public/software/profile.d/compiler_gnu-7.2.0.sh
+          export CC=/public/software/compiler/gnu/7.2.0/bin/gcc
+          export CXX=/public/software/compiler/gnu/7.2.0/bin/g++
+/data01/zhuchenglong/software/python3/Python-3.9.16_build/bin/python3 /data01/wangkun/projects/gene_prediction/version4/test/miniprotGeneAnnotation.py -g sugar_glider.fa -p ../proteins/lung_proteins.fasta -t 20 -o ./lung.gff

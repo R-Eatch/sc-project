@@ -1,0 +1,15 @@
+
+#PBS -N stringtie
+#PBS -o ./
+ 
+#PBS -e ./
+   
+#PBS -q more      
+
+#PBS -l nodes=1:ppn=32
+
+#PBS -r y
+                
+cd $PBS_O_WORKDIR
+
+/usr/bin/time -o time.log -v sh run_stringtie.sh

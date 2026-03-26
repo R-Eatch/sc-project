@@ -1,0 +1,13 @@
+
+#PBS -N GALBA_TEST 
+#PBS -o /data01/sunxuebo/project/zuzhuang/6.GALBA/test
+ 
+#PBS -e /data01/sunxuebo/project/zuzhuang/6.GALBA/test
+   
+#PBS -q more        
+
+#PBS -l nodes=1:ppn=32
+#PBS -r y                
+cd /data01/sunxuebo/project/zuzhuang/6.GALBA/test
+
+/usr/bin/time -o time.log -v sh run_GALBA.sh

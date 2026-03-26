@@ -1,0 +1,1 @@
+/public/home/sunxuebo/software/bowtie2/bowtie2 -x contig_index --threads 64 -1 /data01/sunxuebo/project/zuzhuang/hic_data/cleandata/MG_HIC/MG_HIC_R1.fq.gz  -2  /data01/sunxuebo/project/zuzhuang/hic_data/cleandata/MG_HIC/MG_HIC_R2.fq.gz  -S output_MG.sam

@@ -1,0 +1,22 @@
+
+#PBS -N peaks2utr
+#PBS -o ./
+ 
+#PBS -e ./
+   
+#PBS -q more        
+#PBS -l mem=64gb
+#PBS -l nodes=1:ppn=8
+#PBS -r y                
+
+
+
+cd /data01/sunxuebo/project/zuzhuang/02.hisat2/03.peaks2utr
+
+source /public/home/sunxuebo/software/miniconda3/etc/profile.d/conda.sh
+
+conda activate peaks2utr
+
+/usr/bin/time -o ./time2.log -v peaks2utr -help
+
+

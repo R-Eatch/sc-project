@@ -1,0 +1,14 @@
+
+#PBS -N purge-pipeline 
+#PBS -o /data01/sunxuebo/project/zuzhuang/1.1purge_dups/pipeline
+ 
+#PBS -e /data01/sunxuebo/project/zuzhuang/1.1purge_dups/pipeline
+   
+#PBS -q more        
+
+#PBS -l mem=128gb
+#PBS -l nodes=node5:ppn=32
+#PBS -r y                
+cd /data01/sunxuebo/project/zuzhuang/1.1purge_dups/pipeline
+
+/usr/bin/time -o time.log -v sh pipeline_purge.sh 

@@ -1,0 +1,15 @@
+
+#PBS -N manually_juicer 
+#PBS -o /data01/sunxuebo/project/zuzhuang/5.yahs/manually_assembly
+ 
+#PBS -e /data01/sunxuebo/project/zuzhuang/5.yahs/manually_assembly
+   
+#PBS -q more        
+
+#PBS -l nodes=1:ppn=32
+#PBS -r y                
+cd /data01/sunxuebo/project/zuzhuang/5.yahs/manually_assembly
+
+/usr/bin/time -o time1.log -v bash 4.run_assembly_generate.sh
+
+

@@ -1,0 +1,19 @@
+
+#PBS -N extra
+#PBS -o log
+ 
+#PBS -e log
+   
+#PBS -q more      
+#PBS -l nodes=1:ppn=1
+#PBS -r y                
+
+source /data01/sunxuebo/software/miniconda3/etc/profile.d/conda.sh
+
+conda activate mafft
+
+cd $PBS_O_WORKDIR
+
+export OMP_NUM_THREADS=1
+
+/usr/bin/time -o ./time.log -v bash 1.run_extra_result.sh

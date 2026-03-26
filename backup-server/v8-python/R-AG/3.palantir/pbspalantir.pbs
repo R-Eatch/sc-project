@@ -1,0 +1,18 @@
+
+#PBS -N RAGpalantir-py
+#PBS -o log
+ 
+#PBS -e log
+   
+#PBS -q more       
+#PBS -l nodes=node7:ppn=8
+#PBS -r y                
+
+source /data01/sunxuebo/software/miniconda3/etc/profile.d/conda.sh
+
+conda activate py310
+
+cd $PBS_O_WORKDIR
+
+/usr/bin/time -o ./time.log -v python3 run_palantir.py
+

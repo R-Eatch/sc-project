@@ -1,0 +1,21 @@
+
+#PBS -N HMG-lumhr
+#PBS -o log
+ 
+#PBS -e log
+   
+#PBS -q more      
+#PBS -l nodes=1:ppn=1
+#PBS -r y                
+
+source /data01/sunxuebo/software/miniconda3/etc/profile.d/conda.sh
+
+conda activate py310
+
+cd $PBS_O_WORKDIR
+
+export OMP_NUM_THREADS=1
+
+/usr/bin/time -o ./time.log -v python3 run_find_unigene_LumHR_HMG.py 
+
+

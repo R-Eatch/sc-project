@@ -1,0 +1,15 @@
+#PBS -N Cog.20
+#PBS -o /data01/sunxuebo/project/zuzhuang/04.annotation/cog/00.cog.pbs/Cog.20.pbs.o
+#PBS -e /data01/sunxuebo/project/zuzhuang/04.annotation/cog/00.cog.pbs/Cog.20.pbs.e
+#PBS -q more
+#PBS -l nodes=node3:ppn=16
+#PBS -l walltime=9999:60:60
+#PBS -r y
+
+source /public/software/profile.d/compiler_gnu-7.2.0.sh
+echo Working directory is $PBS_O_WORKDIR
+echo Running on host `hostname`
+echo Start Time is `date`
+echo Directory is `pwd`
+cd /data01/sunxuebo/project/zuzhuang/04.annotation/cog 
+time /public/home/humingliang/software/blast/ncbi-blast-2.7.1+/bin/blastp -query /data01/sunxuebo/project/zuzhuang/04.annotation/test.pep.cut/test.pep.20.fa -out /data01/sunxuebo/project/zuzhuang/04.annotation/cog/test.pep.20.fa.cog.blast -num_alignments 10 -db /public/home/humingliang/database/gene_function/cog/cog_clean.fa -outfmt 0 -evalue 1e-5  -num_threads 16 

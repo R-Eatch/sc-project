@@ -1,0 +1,16 @@
+
+#PBS -N DEG
+#PBS -o log
+ 
+#PBS -e log
+   
+#PBS -q more       
+#PBS -l nodes=node7:ppn=8
+#PBS -l mem=100gb
+#PBS -r y                
+
+source /public/home/sunxuebo/software/miniconda3/etc/profile.d/conda.sh
+cd $PBS_O_WORKDIR
+conda activate new_eatch
+/usr/bin/time -o ./time2.log -v Rscript run_DEGS.R
+

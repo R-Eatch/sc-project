@@ -1,0 +1,12 @@
+
+#PBS -N decode_AG
+#PBS -o ./
+ 
+#PBS -e ./
+   
+#PBS -q more        
+
+#PBS -l nodes=1:ppn=4
+#PBS -r y                
+cd /data01/sunxuebo/project/zuzhuang/01.transdecoder 
+/usr/bin/time -o time1.log -v sh run_decoder.sh

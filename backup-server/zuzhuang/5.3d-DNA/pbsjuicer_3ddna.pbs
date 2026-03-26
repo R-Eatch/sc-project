@@ -1,0 +1,17 @@
+
+#PBS -N juicer_3ddna 
+#PBS -o /data01/sunxuebo/project/zuzhuang/5.3d-DNA
+ 
+#PBS -e /data01/sunxuebo/project/zuzhuang/5.3d-DNA
+   
+#PBS -q more        
+
+#PBS -l nodes=1:ppn=80
+
+#PBS -r y                
+cd /data01/sunxuebo/project/zuzhuang/5.3d-DNA
+
+/usr/bin/time -o time1.log -v sh 1.generate_site_pos.sh
+
+/usr/bin/time -o time2.log -v sh 2.run_3d-DNA.sh
+

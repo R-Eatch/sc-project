@@ -1,0 +1,12 @@
+
+#PBS -N translig
+#PBS -o /data01/sunxuebo/project/zuzhuang/00.translig
+ 
+#PBS -e /data01/sunxuebo/project/zuzhuang/00.translig
+   
+#PBS -q more        
+
+#PBS -l nodes=1:ppn=30
+#PBS -r y                
+cd /data01/sunxuebo/project/zuzhuang/00.translig
+/usr/bin/time -o time.log -v sh run_translig.sh

@@ -1,0 +1,24 @@
+
+#PBS -N sc
+#PBS -o log
+ 
+#PBS -e log
+   
+#PBS -q more      
+#PBS -l nodes=node5:ppn=10
+#PBS -r y                
+
+source /data01/sunxuebo/software/miniconda3/etc/profile.d/conda.sh
+
+conda activate py310
+
+cd $PBS_O_WORKDIR
+
+export OMP_NUM_THREADS=10
+
+/usr/bin/time -o ./time.log -v python3 run_look.py \
+  --in ../data/GSE247719_PanSci_03_Heart_adata.h5ad \
+  --out-info look_info.txt \
+  --out-sub ../data/GSE247719_PanSci_03_Heart_adata.sub20k.h5ad \
+  --n 20000 \
+  --seed 42

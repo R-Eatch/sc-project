@@ -1,0 +1,15 @@
+
+#PBS -N index
+#PBS -o ./
+ 
+#PBS -e ./
+   
+#PBS -q more      
+
+#PBS -l nodes=1:ppn=20
+
+#PBS -r y
+                
+cd /data01/sunxuebo/project/zuzhuang/02.hisat2
+
+/usr/bin/time -o time.log -v sh run_index.sh

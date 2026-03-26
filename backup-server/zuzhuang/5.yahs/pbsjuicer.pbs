@@ -1,0 +1,16 @@
+
+#PBS -N juicer 
+#PBS -o /data01/sunxuebo/project/zuzhuang/5.yahs
+ 
+#PBS -e /data01/sunxuebo/project/zuzhuang/5.yahs
+   
+#PBS -q more        
+
+#PBS -l nodes=1:ppn=32
+#PBS -l mem=200gb
+#PBS -r y                
+cd /data01/sunxuebo/project/zuzhuang/5.yahs
+
+
+/usr/bin/time -o time2.log -v sh 3.run_juicer.sh
+

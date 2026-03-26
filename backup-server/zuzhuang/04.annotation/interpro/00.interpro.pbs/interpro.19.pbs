@@ -1,0 +1,17 @@
+#PBS -N interpro.19
+#PBS -o /data01/sunxuebo/project/zuzhuang/04.annotation/interpro/00.interpro.pbs/interpro.19.pbs.o
+#PBS -e /data01/sunxuebo/project/zuzhuang/04.annotation/interpro/00.interpro.pbs/interpro.19.pbs.e
+#PBS -q more
+#PBS -l nodes=node10:ppn=4
+#PBS -l walltime=9999:60:60
+#PBS -r y
+
+source /public/software/profile.d/compiler_gnu-7.2.0.sh
+echo Working directory is $PBS_O_WORKDIR
+echo Running on host `hostname`
+echo Start Time is `date`
+echo Directory is `pwd`
+cd /data01/sunxuebo/project/zuzhuang/04.annotation/interpro 
+export PATH=/public/home/humingliang/software/java/jdk-11.0.7/bin:$PATH
+export CLASSPATH=.:/public/home/humingliang/software/java/jdk-11.0.7/lib/dt.jar:/public/home/humingliang/software/java/jdk-11.0.7/lib/tools.jar
+cd /data01/sunxuebo/project/zuzhuang/04.annotation/interpro && time /public/home/humingliang/software/gene_function/interpro/interproscan-5.44-79.0/interproscan.sh -appl Gene3D,Pfam,SMART,SUPERFAMILY,PRINTS,Coils -td /data01/sunxuebo/project/zuzhuang/04.annotation/interpro/test.pep.19.temp -b /data01/sunxuebo/project/zuzhuang/04.annotation/interpro/test.pep.19.fa  -i /data01/sunxuebo/project/zuzhuang/04.annotation/test.pep.cut/test.pep.19.fa -iprlookup -goterms -f tsv -t p -dp

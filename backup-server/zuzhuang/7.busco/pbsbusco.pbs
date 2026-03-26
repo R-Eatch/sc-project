@@ -1,0 +1,12 @@
+
+#PBS -N final_busco
+#PBS -o /data01/sunxuebo/project/zuzhuang/7.busco
+ 
+#PBS -e /data01/sunxuebo/project/zuzhuang/7.busco
+   
+#PBS -q more        
+
+#PBS -l nodes=1:ppn=64
+#PBS -r y                
+cd /data01/sunxuebo/project/zuzhuang/7.busco
+/usr/bin/time -o time.log -v sh run_busco.sh

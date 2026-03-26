@@ -1,0 +1,13 @@
+#PBS -N translig_AG
+#PBS -o /data01/sunxuebo/project/zuzhuang/00.translig/
+#PBS -e /data01/sunxuebo/project/zuzhuang/00.translig/
+#PBS -q more
+#PBS -l nodes=1:ppn=20
+#PBS -r y
+
+mkdir -p /data01/sunxuebo/project/zuzhuang/00.translig/trans_out/AG
+cd /data01/sunxuebo/project/zuzhuang/00.translig/trans_out/AG
+r1_file="/data01/sunxuebo/project/zuzhuang/transcriptome_data/ANNO_XS01KF2023120164_PM-XS01KF2023120164-03_2024-01-02_15-14-29_222M5HLT4/Cleandata/AG/AG_R1.fq.gz"
+r2_file="/data01/sunxuebo/project/zuzhuang/transcriptome_data/ANNO_XS01KF2023120164_PM-XS01KF2023120164-03_2024-01-02_15-14-29_222M5HLT4/Cleandata/AG/AG_R2.fq.gz"
+
+/public/home/sunxuebo/software/TransLiG_1.3/TransLiG -s fq -p pair -l $r1_file -r $r2_file -m RF -k 31 -g 200

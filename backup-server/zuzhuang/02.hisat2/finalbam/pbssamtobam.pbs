@@ -1,0 +1,15 @@
+
+#PBS -N sort
+#PBS -o ./
+ 
+#PBS -e ./
+   
+#PBS -q more      
+
+#PBS -l nodes=1:ppn=32
+
+#PBS -r y
+                
+cd /data01/sunxuebo/project/zuzhuang/02.hisat2/finalbam
+
+/usr/bin/time -o time1.log -v sh run_samsort.sh

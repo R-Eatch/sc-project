@@ -1,0 +1,21 @@
+
+#PBS -N all-umap
+#PBS -o log2
+ 
+#PBS -e log2
+   
+#PBS -q more      
+#PBS -l nodes=1:ppn=1
+#PBS -l mem=64gb
+#PBS -r y                
+
+source /data01/sunxuebo/software/miniconda3/etc/profile.d/conda.sh
+
+conda activate py310
+
+cd $PBS_O_WORKDIR
+
+export OMP_NUM_THREADS=1
+
+/usr/bin/time -o ./time1.log -v python3 run_all_cells_umap.py
+

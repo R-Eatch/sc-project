@@ -1,0 +1,18 @@
+
+#PBS -N SMGcell2fate
+#PBS -o log
+ 
+#PBS -e log
+   
+#PBS -q more       
+#PBS -l nodes=1:ppn=40
+#PBS -r y                
+
+source /data01/sunxuebo/software/miniconda3/etc/profile.d/conda.sh
+
+conda activate cell2fate_env
+
+cd $PBS_O_WORKDIR
+
+/usr/bin/time -o ./time.log -v python3 run_cell2fate.py
+

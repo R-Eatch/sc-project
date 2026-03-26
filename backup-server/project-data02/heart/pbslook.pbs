@@ -1,0 +1,19 @@
+
+#PBS -N seurat-look
+#PBS -o log
+ 
+#PBS -e log
+   
+#PBS -q more      
+#PBS -l nodes=node5:ppn=20
+#PBS -r y                
+
+source /data01/sunxuebo/software/miniconda3/etc/profile.d/conda.sh
+
+conda activate hdWGCNA_env
+
+cd $PBS_O_WORKDIR
+
+export OMP_NUM_THREADS=20
+
+/usr/bin/time -o ./time.log -v Rscript run_look.R
